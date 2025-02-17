@@ -1,0 +1,2 @@
+pthread_exit会检查函数退出栈而return不会检测
+被cancel，pthread_cleanup_pop(1), pthread_exit() 这三种情况cleanup函数都会被执行
