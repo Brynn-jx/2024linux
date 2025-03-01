@@ -27,5 +27,15 @@ int makeChild(processData_t* workerList,int childNum)
 }
 
 void handleEvent(int pipeFd){
-    while(1);
+    while(1){
+        // 子进程工作
+        // 收任务
+        int new_fd;
+        recvFd(pipeFd, &new_fd);    // 收到父进程通过套接字发送过来的任务
+        // 给客户发送文件
+        write(new_fd, "hello", 5);
+        //通知父进程完成任务；
+        write(pipeFd, "finish", 6);
+
+    }
 }
